@@ -11,7 +11,7 @@ st.title("AI Disease Prediction App")
 # Feature list
 features = ['Age', 'Gender', 'Blood_Pressure', 'Heart_Rate', 'Cholesterol',
             'Glucose', 'Smoking', 'Alcohol', 'Physical_Activity']
-
+feature_names = ['feature1', 'feature2']
 # Create input form
 user_input = {}
 for feature in features:
