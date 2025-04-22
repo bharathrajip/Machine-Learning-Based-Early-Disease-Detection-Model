@@ -3,23 +3,28 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the model
+# Load the trained model
 model = joblib.load('disease_prediction_model.pkl')
 
-st.title("AI Disease Prediction App")
-
-# Feature list
-Feature list
-features = ['Age', 'Gender', 'Blood_Pressure', 'Heart_Rate', 'Cholesterol',
-            'Glucose', 'Smoking', 'Alcohol', 'Physical_Activity']
-
+# Define the feature names (based on your dataset)
 feature_names = ['feature1', 'feature2']
-# Create input form
-user_input = {}
-for feature in features:
-    user_input[feature] = st.number_input(f"Enter {feature}", value=0.0)
 
+# Streamlit UI
+st.title("Disease Prediction App")
+st.write("Enter the patient details below:")
+
+# Take user input for all features
+user_input = {}
+for feature in feature_names:
+    user_input[feature] = st.number_input(f"Enter {feature}:", step=1.0)
+
+# Predict button
 if st.button("Predict Disease"):
     input_df = pd.DataFrame([user_input])
+
+    # Ensure input has same feature columns in correct order
+    input_df = input_df[feature_names]
+
+    # Prediction
     prediction = model.predict(input_df)[0]
     st.success(f"Predicted Disease: {prediction}")
