@@ -9,6 +9,9 @@ model = joblib.load('disease_prediction_model.pkl')
 st.title("AI Disease Prediction App")
 
 # Feature list
+Feature list
+features = ['Age', 'Gender', 'Blood_Pressure', 'Heart_Rate', 'Cholesterol',
+            'Glucose', 'Smoking', 'Alcohol', 'Physical_Activity']
 
 feature_names = ['feature1', 'feature2']
 # Create input form
